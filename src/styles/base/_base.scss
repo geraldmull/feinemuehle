@@ -1,0 +1,33 @@
+// rem are recomended
+html {
+    font-size: 62.5%; // 10px is the base 2rem will be calculated to 20 px 
+}
+
+body {
+    font-family: Helvetica, Aria, sans-serif;
+    background: white;
+    font-size: $m-size;
+}
+
+h1 {
+    font-size: $xl-size;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+@media (min-width: $desktop-breakpoint) {
+    body {
+    font-size: $l-size;
+    }
+}
+
+// nav links styles
+.is-active {
+    font-weight: bold;
+}
