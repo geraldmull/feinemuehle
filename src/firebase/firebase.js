@@ -1,3 +1,21 @@
+import * as firebase from 'firebase';
+
+const config = {
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
+};
+
+firebase.initializeApp(config);
+
+const database = firebase.database();
+
+export { firebase, database as default };
+
+
 // takes named exports from firebase
 // dumps them on vabriable called firebase
 // * star give acces to all methods of object
@@ -5,41 +23,47 @@
 // crud: create read update delete
 // firebase does not support arrays !!!
 
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase'
 
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBH-NSqZ9YA7U7o64dcH4Cc1aGoD3Du7OI",
-    authDomain: "webapp-1d11b.firebaseapp.com",
-    databaseURL: "https://webapp-1d11b.firebaseio.com",
-    projectId: "webapp-1d11b",
-    storageBucket: "webapp-1d11b.appspot.com",
-    messagingSenderId: "858473871258"
-  };
+//   // Initialize Firebase
+//   const config = {
+//     apiKey: "AIzaSyBH-NSqZ9YA7U7o64dcH4Cc1aGoD3Du7OI",
+//     authDomain: "webapp-1d11b.firebaseapp.com",
+//     databaseURL: "https://webapp-1d11b.firebaseio.com",
+//     projectId: "webapp-1d11b",
+//     storageBucket: "webapp-1d11b.appspot.com",
+//     messagingSenderId: "858473871258"
+//   };
 
-firebase.initializeApp(config);
+// firebase.initializeApp(config);
 
-// use database tool
-// write string to database
-// data types: strings, numbers, booleans, objects, arrays
+// // use database tool
+// // write string to database
+// // data types: strings, numbers, booleans, objects, arrays
 
-const database = firebase.database();
+// const database = firebase.database();
+
+// export { firebase, database as default };
+
+
+
+
 
 // child_remove has event callback
 
-database.ref('expenses').on('child_removed', (snapshot) => {
-  console.log(snapshot.key, snapshot.val());
-});
+// database.ref('expenses').on('child_removed', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
 
-// child_change
-database.ref('expenses').on('child_changed', (snapshot) => {
-  console.log(snapshot.key, snapshot.val());
-});
+// // child_change
+// database.ref('expenses').on('child_changed', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
 
-// child_added, gets called for all childreen not only the new ones
-database.ref('expenses').on('child_added', (snapshot) => {
-  console.log(snapshot.key, snapshot.val());
-});
+// // child_added, gets called for all childreen not only the new ones
+// database.ref('expenses').on('child_added', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
 
 
 // read out data from database
@@ -78,14 +102,14 @@ database.ref('expenses').on('child_added', (snapshot) => {
 // });
 
 // create nodes in the datebase
-database.ref('expenses').push({
+// database.ref('expenses').push({
 
-description: 'rent 87657685',
-note: 'dfhnetn',
-amount: 3456543,
-createdAt: 7863246534
+// description: 'rent 87657685',
+// note: 'dfhnetn',
+// amount: 3456543,
+// createdAt: 7863246534
 
-});
+// });
 
 
 

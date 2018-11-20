@@ -13,6 +13,7 @@ import 'react-dates/lib/css/_datepicker.css';
 // run firebase
 import './firebase/firebase';
 // import './playground/promises';
+// test
 
 const store = configureStore();
 
