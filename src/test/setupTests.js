@@ -2,7 +2,7 @@
 // https://airbnb.io/enzyme/docs/installation/react-16.html
 
 
-require('dotenv').config({ path:'.env.test' });
+require('dotenv').config({ path: '.env.test' });
 
 
 // import DotEnv from 'dotenv';
