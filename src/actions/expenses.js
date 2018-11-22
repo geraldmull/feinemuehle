@@ -2,8 +2,6 @@ import uuid from 'uuid';
 import database from '../firebase/firebase';
 
 // redux make applikation scalable
-
-
 // ADD_EXPENSE
 export const addExpense = (expense) => ({
     type: 'ADD_EXPENSE',
@@ -20,7 +18,6 @@ export const startAddExpense = (expenseData = {}) => {
             amount = 0,
             createdAt = 0            
         } = expenseData;
-
         const expense = { description, note, amount, createdAt };
 
         // create expenses in database
@@ -45,3 +42,20 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 });
+
+// manipulate the redux store
+// SET_EXPENSES
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+});
+
+
+// START_SET_EXPENSES
+
+
+
+
+
+
+

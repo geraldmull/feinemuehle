@@ -23,18 +23,6 @@ export { firebase, database as default };
 // crud: create read update delete
 // firebase does not support arrays !!!
 
-// import * as firebase from 'firebase'
-
-//   Initialize Firebase
-//   const config = {
-//     apiKey: "AIzaSyBH-NSqZ9YA7U7o64dcH4Cc1aGoD3Du7OI",
-//     authDomain: "webapp-1d11b.firebaseapp.com",
-//     databaseURL: "https://webapp-1d11b.firebaseio.com",
-//     projectId: "webapp-1d11b",
-//     storageBucket: "webapp-1d11b.appspot.com",
-//     messagingSenderId: "858473871258"
-//   };
-
 // // use database tool
 // // write string to database
 // // data types: strings, numbers, booleans, objects, arrays
