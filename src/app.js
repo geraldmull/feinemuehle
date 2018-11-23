@@ -1,60 +1,48 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import AppRouter from './routers/AppRouter';
+import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { startSetExpenses } from './actions/expenses';
-import { setTextFilter } from './actions/filters';
+import { login, logout } from './actions/auth';
 import getVisibleExpenses from './selectors/expenses';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-// run firebase
-import './firebase/firebase';
-// import './playground/promises';
-// test
+import { firebase } from './firebase/firebase';
 
 const store = configureStore();
-
 const jsx = (
-    <Provider store={store}>
-        <AppRouter />
-    </Provider>
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
 );
-
-
-ReactDOM.render(<p>Loading ...</p>, document.getElementById('app'));
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('app'));
+    hasRendered = true;
+  }
+};
 
 // dispatch action from store
 // start set expenses is returning a promise
 // on success the application is rendered
-store.dispatch(startSetExpenses()).then(() => {
-    ReactDOM.render(jsx, document.getElementById('app'));
+
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    store.dispatch(login(user.uid));
+    store.dispatch(startSetExpenses()).then(() => {
+      renderApp();
+      if (history.location.pathname === '/') {
+        history.push('/dashboard');
+      }
+    });
+  } else {
+    store.dispatch(logout());
+    renderApp();
+    history.push('/');
+  }
 });
-
-
-
-
-// console.log('testing dev environment');
-// console.log(store.getState());
-// store.dispatch(addExpense({ description: 'Water Bill', amount: 4500 }));
-// store.dispatch(addExpense({ description: 'Gass Bill', amount: 3000  }));
-// store.dispatch(addExpense({ description: 'Rent', amount: 8764578 }));
-
-// store.dispatch(setTextFilter(''));
-
-// setTimeout(() => {
-//     store.dispatch(setTextFilter('water'));
-// }, 3000)
-
-// const state = store.getState();
-// const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-
-// provider give components access to the store
-// 2 this code will not be changed
-
-// render with passed options
-
-// components are split into files, easier to maintain
-// 1 setup provider for components in the application
