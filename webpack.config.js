@@ -1,20 +1,6 @@
-// entry point app.js in src -> output
-
-// set path to current 
-// >node webpack.config.js
-// C:\projects_react\react-course-project\indecision-app
-
 const path = require('path');
-
-// define variables database connection as string
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-
-// process.env.NODE_ENV environment variable
-// stores the current environement (production / test)
-// heroku sets string automatically to production
-// test env or undefined (production)
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -42,18 +28,18 @@ module.exports = (env) => {
       }, {
         test: /\.s?css$/,
         use: CSSExtract.extract({
-          use: [           
+          use: [
             {
-                loader: 'css-loader',
-                options: {
-                  sourceMap: true
-                }
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
             },
             {
-                loader: 'sass-loader',
-                options: {
-                  sourceMap: true
-                }
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
             }
           ]
         })
