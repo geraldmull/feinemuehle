@@ -1,12 +1,18 @@
 // rem are recomended
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-size: 62.5%; // 10px is the base 2rem will be calculated to 20 px 
 }
 
 body {
+    color: $dark-grey;
     font-family: Helvetica, Aria, sans-serif;
     background: white;
     font-size: $m-size;
+    line-height: 1.6;
 }
 
 h1 {
